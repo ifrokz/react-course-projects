@@ -16,7 +16,11 @@ console.log('nameConst', nameConst);
 const fullName = 'Andrew Mead';
 
 let firstName;
-if(fullName){
+        // var si se eria fuera del if,
+        // let no, por eso hay que declararlo fuera  
+        // si queremos que se pueda 
+        // utilizar fuera del scope del if.
+if(fullName){ 
     firstName = fullName.split(' ')[0];
     console.log(firstName);
 }
