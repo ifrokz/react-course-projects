@@ -1,53 +1,77 @@
-console.log('App.js is running!');
+class IndecisionApp extends React.Component {
+    render (){
+        const title = 'Indecision';
+        const subtitle = 'Put your life in the hands of a computer.';
 
-const app = {
-    title: "Indecision App",
-    subtitle: "Put your life in the hands of the computer.",
-    options: ['One', 'Two']
+        const options = ['Thing one', 'Thing two', 'Thing four'];
+        return (
+            <div>
+                <Header title={title} subtitle={subtitle}/>
+                <Action />
+                <Options options={options}/>
+                <AddOption />
+            </div>
+        );
+    }
 }
 
-// JSX  - JavaScript XML
-const template = (
-    <div>
-        <h1 id='1'>{app.title}</h1>
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{app.options.length > 0 ? 'Here are your options.' : 'No options.'}</p>
-        <ol>
-            <li>Item one</li>
-            <li>Item two</li>
-        </ol>
-    </div>
-);
-
-// ----------------------------------------- // 
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounterApp();
-};
-const minusOne = () => {
-    count --;
-    renderCounterApp();
-};
-const reset = () => {
-    count = 0;
-    renderCounterApp();
-};
-
-// ---------------------------------------------- //
-const appRoot = document.getElementById("app");
-
-const renderCounterApp = () => {
-    const templateTwo = (
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>reset</button>
-        </div>
-    );
-
-    ReactDOM.render(templateTwo, appRoot);
+class Header extends React.Component {
+    render(){
+        return (
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
+            </div>
+        );
+    }
 }
 
-renderCounterApp();
+class Action extends React.Component {
+    render(){
+        return (
+            <div>
+                <button>What should I do?</button>
+            </div>
+        );
+    }
+}
+
+class Options extends React.Component {
+    render (){
+
+        return (
+            <div>
+                Options length: {this.props.options.length} 
+                {
+                    this.props.options.map((option) => {
+                        return <Option key={option} option={option}>{option}</Option>
+                    })
+                }
+            </div>
+        );
+    }
+}
+
+class Option extends React.Component {
+    render (){
+        return (
+            <div>
+                Option {this.props.option}
+            </div>
+        );
+    }
+}
+
+class AddOption extends React.Component {
+    render (){ 
+        return (
+            <div>
+                AddOption component here.
+            </div>
+        );
+    }
+}
+
+
+
+ReactDOM.render(<IndecisionApp/>, document.getElementById('app'));
