@@ -12,6 +12,13 @@ module.exports = {
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/
+        },{
+            test: /\.s?css$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
         }]
     },
     // good for development, not production || Easy debugging ( shows the real file in the browser console ) .
